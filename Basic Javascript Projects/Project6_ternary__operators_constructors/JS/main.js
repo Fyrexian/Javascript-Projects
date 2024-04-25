@@ -21,3 +21,24 @@ function Vehicle (Make, Model, Year, Color) {
     "manufactured in " + Erik. Vehicle_Year;
     }
     
+
+/**
+ * Updates the content of an element with the result of the Count function.
+ */
+function count_Function() {
+    document.getElementById("Nested_Function").innerHTML = Count();
+
+    /*
+     * Increments the Starting_point variable by 1 and returns the updated value.
+     * @returns {number} The updated value of the Starting_point variable.
+     */
+    function Count() {
+        var Starting_point = 9;
+
+        function Plus_one() {
+            Starting_point += 1;
+        }
+        Plus_one();
+        return Starting_point;
+    }
+}
