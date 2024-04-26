@@ -24,4 +24,28 @@ function cat_pics () {
     Cat_Picture [2] = "eating";
     Cat_Picture [3] = "purring";
     document.getElementById("Cat").innerHTML = "In this picture, the cat is " + Cat_Picture [2] + ".";
- }
+}
+
+
+let car = {
+    make: "Dodge",
+    model: "Viper",
+    year: "2021",
+    color: "red",
+    description: function() {
+        return "The car is a " + this.year + this.color + this.make + this.model;
+    }
+};
+
+function myCar() {
+    document.getElementById("Car_Object").innerHTML = car.description();
+}
+
+function break_statement() {
+    var text = "";
+    for (let i = 0; i < 10; i++) {
+        if (i === 3) { break; }
+        text += "The number is " + i + "<br>";
+    }
+    document.getElementById("break").innerHTML = text;
+}
