@@ -15,14 +15,16 @@ function get_todos () {
 /*This function adds the inputed task to the get_todos function array*/
 function add () {
     /*This takes the inputed task and creates a variable of it*/
-    var task= document.getElementById('task').value;
-    var todos = get_todos ();
-    /*This adds a new task the end of the array*/
-    todos.push(task);
-    /* this converts the task input to a JSON string*/
-    localStorage.setItem('todo', JSON.stringify(todos));
-    document.getElementById("task").value = "";
-    show();
+    var task = document.getElementById('task').value;
+    if (task !== '') {
+        var todos = get_todos();
+        /*This adds a new task the end of the array*/
+        todos.push(task);
+        /* this converts the task input to a JSON string*/
+        localStorage.setItem('todo', JSON.stringify(todos));
+        document.getElementById("task").value = "";
+        show();
+    }
     return false;
 }
 
@@ -40,9 +42,25 @@ function show () {
     html += '</ul>';
     /*This displays the task as a list*/
     document.getElementById('todos').innerHTML = html;
+
+    var buttons = document.getElementsByClassName('remove');
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', remove);
+}
 }
 
 /*This displays the inputed task when the 'Add Item' button is clicked*/
 document.getElementById('add').addEventListener('click', add);
 /*this will keep the inputs displayed permantaly on the screen*/
 show();
+
+/*  this creates the functionality of removing a todo item when 'x' button is clicked */
+function remove() {
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+    show();
+
+    return false;
+}
